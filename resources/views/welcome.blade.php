@@ -22,24 +22,25 @@
                 <input class="border" type="text" name="nama" required>
             </div>
             <div>
-                <h3>Barang: </h3>
+                <h3 class="mt-5">Barang </h3>
                 <div id="items-container">
                     <div class="item">
                         <label for="">Nama produk:</label>
-                        <input type="text" nama="barang[0][nama_produk]" required>
-                        <label for="jumlah">Jumlah:</label>
-                        <input type="number" name="barang[0][jumlah]" required>
-                        <label for=""></label>
+                        <input class="border px-3 my-3 rounded-md h-7" type="text" nama="barang[0][nama_produk]" required>
+                        <label class="mx-2" for="jumlah">Jumlah:</label>
+                        <input class="border rounded-md" type="number" name="barang[0][jumlah]" required>
+                        <label class="mt-10"for="harga_satuan">Harga Satuan</label>
+                        <input class="border rounded-md" type="number" name="barang[0][harga_satuan]" min="0" required>
                     </div>
                     
                 
                 </div>
-                <button type="button" onclick="addItem()">Tambah Barang</button>
+                <button class="bg-blue-600 text-white px-3 py-1 my-8 rounded-md" type="button" onclick="addItem()">Tambah Barang</button>
             </div>
 
-            <div>
+            <div class="flex justify-center">
 
-                <button type="submit">Tambah Pembelian</button>
+                <button class="bg-blue-600 text-white px-3 py-1 my-8 rounded-md" type="submit">Tambah Pembelian</button>
             </div>
         </form>
         <script>
