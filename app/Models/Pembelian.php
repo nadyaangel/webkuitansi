@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pembelian extends Model
 {
+    protected $fillable = ['nama', 'total_harga'];
+    protected $table = 'pembelian';
     public function barang() {
         return $this->hasMany(Barang::class);
     }

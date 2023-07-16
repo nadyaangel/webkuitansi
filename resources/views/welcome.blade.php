@@ -12,7 +12,7 @@
     <body >
         <h1 class="text-lg text-center font-semibold mt-5">Form Pembelian</h1>
 
-        <form class="mx-10 mt-10" method="POST">
+        <form class="mx-10 mt-10" method="POST" action="/saveInvoice">
             @csrf
 
             <div>
@@ -26,7 +26,7 @@
                 <div id="items-container">
                     <div class="item">
                         <label for="">Nama produk:</label>
-                        <input class="border px-3 my-3 rounded-md h-7" type="text" nama="barang[0][nama_produk]" required>
+                        <input class="border px-3 my-3 rounded-md h-7" type="text" name="barang[0][nama_produk]" required>
                         <label class="mx-2" for="jumlah">Jumlah:</label>
                         <input class="border rounded-md" type="number" name="barang[0][jumlah]" required>
                         <label class="mt-10"for="harga_satuan">Harga Satuan</label>

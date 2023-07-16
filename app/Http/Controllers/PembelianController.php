@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pembelian;
+use App\Models\Barang;
 use PDF;
 
 class PembelianController extends Controller
 {
     //
     public function processForm(Request $request){
+        try{
         $data = $request->validate([
             'nama' => 'required|string',
             'barang' => 'required|array',
@@ -37,7 +40,13 @@ class PembelianController extends Controller
         $pembelian->total_harga = $totalHarga;
         $pembelian->save();
 
-        return redirect('/pembelian')->with('success', 'Pembelian berhasil ditambahkan');
+        session(['pembelian_id' => $pembelian->id]);
+
+        return redirect()->route('detailPembelian', ['id' => $pembelian->id])->with('success', 'Pembelian berhasil ditambahkan'); }
+        catch(\Exception $e){
+            dd($e->getMessage());
+        }
+
 
     }
 
@@ -45,5 +54,10 @@ class PembelianController extends Controller
         $pembelian = Pembelian::findOrFail($id);
         $pdf = PDF::loadView('pembelian.invoice', compact('pembelian'));
         return $pdf->download('invoice.pdf');
+    }
+
+    public function showDetail($id){
+        $pembelian = Pembelian::findOrFail($id);
+        return view('invoice', compact('pembelian'));
     }
 }
