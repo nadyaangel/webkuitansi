@@ -3,11 +3,7 @@
     <head>
        <title>Form</title>
        @vite('resources/css/app.css')
-        <style>
-            body {
-                /* font-family: 'Nunito', sans-serif; */
-            }
-        </style>
+        
     </head>
     <body >
         <h1 class="text-lg text-center font-semibold mt-5">Form Pembelian</h1>
