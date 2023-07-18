@@ -27,6 +27,7 @@
         </tr>
         @endforeach
     </table>
-    <p>Total Harga: {{$pembelian->total_harga}}</p>
+    <p class="ml-5 my-5">Total Harga: {{$pembelian->total_harga}}</p>
+    <a href="{{ route('printInvoice', ['id' => $pembelian->id])}}" class="bg-blue-700 text-white rounded-md px-2 py-1 mx-5">Cetak Invoice</a>
 </body>
 </html>
