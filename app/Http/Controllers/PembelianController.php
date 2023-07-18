@@ -52,12 +52,12 @@ class PembelianController extends Controller
 
     public function printInvoice($id){
         $pembelian = Pembelian::findOrFail($id);
-        $pdf = PDF::loadView('invoice', compact('pembelian'));
+        $pdf = PDF::loadView('invoicepembelian', compact('pembelian'));
         return $pdf->download('invoice.pdf');
     }
 
     public function showDetail($id){
         $pembelian = Pembelian::findOrFail($id);
-        return view('invoice', compact('pembelian'));
+        return view('invoicepembelian', compact('pembelian'));
     }
 }
