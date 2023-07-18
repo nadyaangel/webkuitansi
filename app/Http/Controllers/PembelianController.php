@@ -58,6 +58,6 @@ class PembelianController extends Controller
 
     public function showDetail($id){
         $pembelian = Pembelian::findOrFail($id);
-        return view('invoicepembelian', compact('pembelian'));
+        return view('invoice', compact('pembelian'));
     }
 }

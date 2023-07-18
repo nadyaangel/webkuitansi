@@ -27,7 +27,7 @@
     <h2 style="text-align: center">AGEN JNE & ATK DJAYA ABADHI</h3>
     <h2 style="text-align:center;">Invoice Pembelian</h2>
 
-    <h3 class="">Nama : {{ $pembelian->nama }}</h3>
+    <h3 class="" style="padding-left: 30pt">Nama : {{ $pembelian->nama }}</h3>
     <table class="tabel" style="margin-left: auto; margin-right: auto;  ">
         <tr class="" style="background-color: aquamarine">
             <th class="tabel">Nama Produk</th>
@@ -44,8 +44,14 @@
             <td>{{$barang->jumlah* $barang->harga_satuan}}</td>
         </tr>
         @endforeach
+        <tr>
+            <td colspan="4">
+                Total Harga: {{$pembelian->total_harga}}
+            </td>
+        </tr>
     </table>
-    <p class="">Total Harga: {{$pembelian->total_harga}}</p>
+
+    <p style="text-align: end; margin:50px;">Toko Djaya Abadhi</p>
    
 </body>
 </html>

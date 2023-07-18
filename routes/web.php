@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PembelianController;
-
+use App\Http\Controllers\KuitansiConntroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::post('/saveInvoice', [PembelianController::class, 'processForm']);
 Route::get('/pembelian/{id}/detail', [PembelianController::class, 'showDetail'])->name('detailPembelian');
 Route::get('/pembelian/{id}/print', [PembelianController::class, 'printInvoice'])->name('printInvoice');
+Route::get('/kuitansi/form', [KuitansiConntroller::class, 'showForm'])->name('kuitansiform');
+Route::post('/kuitansi/generate', [KuitansiConntroller::class, 'generateKuitansi'])->name('kuitansi.generate');
