@@ -6,8 +6,8 @@
 <body>
     <h1>Kuitansi</h1>
 
-    <p>Nama Pengirim: {{ $data['nama_pengirim'] }}</p>
-    <p>Jumlah Uang: {{ $data['jumlah_uang'] }}</p>
-    <p>Tujuan Pembayaran: {{ $data['tujuan_pembayaran'] }}</p>
+    <p>Nama Pengirim: {{ $kuitansi->nama_pengirim}}</p>
+    <p>Jumlah Uang: {{ $kuitansi->jumlah_uang }}</p>
+    <p>Tujuan Pembayaran: {{ $kuitansi->tujuan_pembayaran }}</p>
 </body>
 </html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kuitansi;
 use PDF;
 
 class KuitansiConntroller extends Controller
@@ -18,7 +19,21 @@ class KuitansiConntroller extends Controller
             'tujuan_pembayaran' => 'required|string',
         ]);
 
-        $pdf = PDF::loadView('kuitansipdf', compact('data'));
+        $kuitansi = Kuitansi::create($data);
+
+        return redirect()->route('kuitansi.detail', ['id' => $kuitansi->id])->with('success', 'Kuitansi berhasil ditambahkan');
+
+       
+    }
+
+    public function showDetail($id){
+        $kuitansi = Kuitansi::findOrFail($id);
+        return view('kuitansidetail', compact('kuitansi'));
+    }
+
+    public function printKuitansi($id){
+        $kuitansi = Kuitansi::findOrFail($id);
+        $pdf = PDF::loadView('kuitansipdf', compact('kuitansi'));
         return $pdf->download('kuitansi.pdf');
     }
 }

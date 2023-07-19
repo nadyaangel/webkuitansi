@@ -22,3 +22,5 @@ Route::get('/pembelian/{id}/detail', [PembelianController::class, 'showDetail'])
 Route::get('/pembelian/{id}/print', [PembelianController::class, 'printInvoice'])->name('printInvoice');
 Route::get('/kuitansi/form', [KuitansiConntroller::class, 'showForm'])->name('kuitansiform');
 Route::post('/kuitansi/generate', [KuitansiConntroller::class, 'generateKuitansi'])->name('kuitansi.generate');
+Route::get('/kuitansi/{id}', [KuitansiConntroller::class, 'showDetail'])->name('kuitansi.detail');
+Route::get('/kuitansi/{id}/print', [KuitansiConntroller::class, 'printKuitansi'])->name('printKuitansi');
