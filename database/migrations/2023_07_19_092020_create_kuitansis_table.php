@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('kuitansis', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pengirim');
-            $table->decimal('jumlah_uang', 10, 2);
+            $table->bigInteger('jumlah_uang');
             $table->string('tujuan_pembayaran');
             $table->timestamps();
         });
@@ -29,6 +29,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kuitansis');
+        Schema::dropIfExists('kuitansis', function (Blueprint $table){
+            $table->decimal('jumlah_uang', 10, 2)->change();
+        });
     }
 };

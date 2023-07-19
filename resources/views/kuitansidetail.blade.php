@@ -17,7 +17,11 @@
         </tr>
         <tr>
             <td>Jumlah Uang:</td>
-            <td>{{ $kuitansi->jumlah_uang }}</td>
+            <td>{{number_format( $kuitansi->jumlah_uang, 0) }}</td>
+        </tr>
+        <tr>
+            <td>Terbilang:</td>
+            <td>{{$kuitansi ->jumlah_uang_terbilang}}</td>
         </tr>
         <tr>
             <td>Tujuan Pembayaran:</td>
