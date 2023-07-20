@@ -10,6 +10,9 @@ use PDF;
 class PembelianController extends Controller
 {
     //
+    public function showFormPembelian(){
+        return view('invoiceform');
+    }
     public function processForm(Request $request){
         try{
         $data = $request->validate([

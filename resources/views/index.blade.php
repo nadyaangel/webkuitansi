@@ -58,7 +58,7 @@
 
     <div class="flex justify-center m-5 space-x-8">
         <div class="flex justify-center mt-8 space-x-4">
-            <a href="#">
+            <a href="/kuitansi/form">
                 <div class="bg-white px-5 py-2 shadow-md rounded-md image-container">
                     <div class="rounded-full overflow-hidden w-36 h-36 ">
                         <img src="/assets/image/money.jpg" class="w-full h-full" alt="">
@@ -69,12 +69,12 @@
             </a>
         </div>
         <div class="flex justify-center mt-8">
-            <a href="#">
+            <a href="/invoice/form">
                 <div class="bg-white px-5 py-2 shadow-md rounded-md image-container">
                     <div class="rounded-full overflow-hidden w-36 h-36 ">
-                        <img src="/assets/image/money.jpg" class="w-full h-full" alt="">
+                        <img src="/assets/image/casier.jpg" class="w-full h-full" alt="">
                     </div>
-                    <p class="mt-5 text-center">Kuitansi</p>
+                    <p class="mt-5 text-center">Invoice</p>
                 </div>
                 <!-- Add a wrapper div to apply the circular style -->
             </a>

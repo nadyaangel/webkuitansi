@@ -17,6 +17,7 @@ use App\Http\Controllers\KuitansiConntroller;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/invoice/form', [PembelianController::class, 'showFormPembelian']);
 Route::post('/saveInvoice', [PembelianController::class, 'processForm']);
 Route::get('/pembelian/{id}/detail', [PembelianController::class, 'showDetail'])->name('detailPembelian');
 Route::get('/pembelian/{id}/print', [PembelianController::class, 'printInvoice'])->name('printInvoice');
