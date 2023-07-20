@@ -29,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kuitansis', function (Blueprint $table){
-            $table->decimal('jumlah_uang', 10, 2)->change();
-        });
+      
     }
 };
