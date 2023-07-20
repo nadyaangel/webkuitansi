@@ -37,7 +37,7 @@
                 </button>
                 <div class="hidden md:flex space-x-4">
                     <a href="#" class="px-3 py-2 text-gray-800 hover:text-gray-900">Daftar Invoice</a>
-                    <a href="#" class="px-3 py-2 text-gray-800 hover:text-gray-900">Daftar Kuitansi</a>
+                    <a href="/daftarPembelian" class="px-3 py-2 text-gray-800 hover:text-gray-900">Daftar Kuitansi</a>
 
                 </div>
             </div>

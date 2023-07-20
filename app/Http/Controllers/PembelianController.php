@@ -13,6 +13,14 @@ class PembelianController extends Controller
     public function showFormPembelian(){
         return view('invoiceform');
     }
+
+    public function getAllPembelian(Request $request){
+        $pembelian = Pembelian::query();
+
+        $pembelian = $pembelian->paginate(10);
+
+        return view('daftarpembelian', ['pembelian' => $pembelian]);
+    }
     public function processForm(Request $request){
         try{
         $data = $request->validate([
