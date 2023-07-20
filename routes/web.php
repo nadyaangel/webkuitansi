@@ -15,7 +15,7 @@ use App\Http\Controllers\KuitansiConntroller;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 Route::post('/saveInvoice', [PembelianController::class, 'processForm']);
 Route::get('/pembelian/{id}/detail', [PembelianController::class, 'showDetail'])->name('detailPembelian');
