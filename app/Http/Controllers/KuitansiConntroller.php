@@ -12,6 +12,12 @@ class KuitansiConntroller extends Controller
         return view('kuitansiform');
     }
 
+    public function getAllKuitansi(Request $request){
+        $kuitansi = Kuitansi::query();
+        $kuitansi = $kuitansi->paginate(10);
+        return view('daftarkuitansi', ['kuitansi' => $kuitansi]);
+    }
+
     public function convertToWords($number)
     {
     $words = ["", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas"];
