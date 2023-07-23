@@ -12,11 +12,11 @@
 
     <table>
         <tr>
-            <td>Nama Pengirim:</td>
+            <td>Sudah terima dari:</td>
             <td>{{ $kuitansi->nama_pengirim }}</td>
         </tr>
         <tr>
-            <td>Jumlah Uang:</td>
+            <td>Uang sejumlah:</td>
             <td>Rp{{number_format( $kuitansi->jumlah_uang, 0) }} </td>
         </tr>
         <tr>
@@ -24,7 +24,7 @@
             <td>{{$kuitansi ->jumlah_uang_terbilang}} Rupiah</td>
         </tr>
         <tr>
-            <td>Tujuan Pembayaran:</td>
+            <td>Untuk Pembayaran:</td>
             <td>{{ $kuitansi->tujuan_pembayaran }}</td>
         </tr>
         <tr>
@@ -33,7 +33,7 @@
         </tr>
     </table>
 
-    <a href="{{ route('printKuitansi', ['id' => $kuitansi->id])}}" class="bg-blue-700 text-white rounded-md px-2 py-1 mx-5">Cetak Invoice</a>
+    <a href="{{ route('printKuitansi', ['id' => $kuitansi->id])}}" class="bg-blue-700 text-white rounded-md px-2 py-1 mx-5">Cetak Kuitansi</a>
     
 </body>
 </html>
