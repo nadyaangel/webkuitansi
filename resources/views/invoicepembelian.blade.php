@@ -31,7 +31,6 @@
     <table class="tabel" style="margin-left: auto; margin-right: auto;  ">
         <tr class="" style="background-color: aquamarine">
             <th class="tabel">Nama Produk</th>
-            <th class="tabel">Jumlah</th>
             <th class="tabel">Harga Satuan</th>
             <th class="tabel">Subtotal</th>
         </tr>
@@ -39,7 +38,6 @@
         @foreach($pembelian->barang as $barang)
         <tr class="">
             <td class="">{{$barang ->nama_produk}}</td>
-            <td style="">{{$barang->jumlah}}</td>
             <td>{{$barang->harga_satuan}}</td>
             <td>{{$barang->jumlah* $barang->harga_satuan}}</td>
         </tr>

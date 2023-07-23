@@ -27,7 +27,7 @@ class PembelianController extends Controller
             'nama' => 'required|string',
             'barang' => 'required|array',
             'barang.*.nama_produk' => 'required|string',
-            'barang.*.jumlah' => 'required|integer|min:1',
+            // 'barang.*.jumlah' => 'required|integer|min:1',
             'barang.*.harga_satuan' => 'required|numeric|min:0'
         ]);
 
@@ -40,12 +40,12 @@ class PembelianController extends Controller
         foreach($data['barang'] as $barangData){
             $barang = new Barang([
                 'nama_produk' => $barangData['nama_produk'],
-                'jumlah' => $barangData['jumlah'],
+                // 'jumlah' => $barangData['jumlah'],
                 'harga_satuan' => $barangData['harga_satuan']
             ]);
 
             $pembelian->barang()->save($barang);
-            $totalHarga += ($barangData['jumlah'] * $barangData['harga_satuan']);
+            $totalHarga += ($barangData['harga_satuan']);
 
         }
         $pembelian->total_harga = $totalHarga;

@@ -23,8 +23,7 @@
                     <div class="item">
                         <label for="">Nama produk:</label>
                         <input class="border px-3 my-3 rounded-md h-7" type="text" name="barang[0][nama_produk]" required>
-                        <label class="mx-2" for="jumlah">Jumlah:</label>
-                        <input class="border rounded-md" type="number" name="barang[0][jumlah]" required>
+      
                         <label class="mt-10"for="harga_satuan">Harga Satuan</label>
                         <input class="border rounded-md" type="number" name="barang[0][harga_satuan]" min="0" required>
                     </div>
@@ -60,16 +59,16 @@
             namaProdukInput.required = true;
             itemDiv.appendChild(namaProdukInput);
 
-            const jumlahLabel = document.createElement('label');
-            jumlahLabel.textContent = 'Jumlah: ';
-            itemDiv.appendChild(jumlahLabel);
+            // const jumlahLabel = document.createElement('label');
+            // jumlahLabel.textContent = 'Jumlah: ';
+            // itemDiv.appendChild(jumlahLabel);
 
-            const jumlahInput = document.createElement('input');
-            jumlahInput.type = 'number';
-            jumlahInput.name = `barang[${itemCount}][jumlah]`
-            jumlahInput.min = 1;
-            jumlahInput.required = true;
-            itemDiv.appendChild(jumlahInput);
+            // const jumlahInput = document.createElement('input');
+            // jumlahInput.type = 'number';
+            // jumlahInput.name = `barang[${itemCount}][jumlah]`
+            // jumlahInput.min = 1;
+            // jumlahInput.required = true;
+            // itemDiv.appendChild(jumlahInput);
 
             const hargaSatuanLabel = document.createElement('label');
             hargaSatuanLabel.textContent = 'Harga Satuan: ';

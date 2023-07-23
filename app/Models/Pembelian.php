@@ -12,4 +12,8 @@ class Pembelian extends Model
     public function barang() {
         return $this->hasMany(Barang::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
