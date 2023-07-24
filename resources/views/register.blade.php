@@ -5,17 +5,20 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    @include('navbar')
     <form action="" method="post">
         @csrf
-        <label for="username">Username</label>
-        <input type="username" name="username" required>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+
         <br>
-        <label for="password"> Password
-        </label>
+        <label for="password">Password:</label>
         <input type="password" name="password" required>
         <br>
-        <button type="submit">Login</button>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+        <button type="submit"></button>
+
     </form>
 </body>
 </html>
