@@ -21,11 +21,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pembelian/{id}/detail', [PembelianController::class, 'showDetail'])->name('detailPembelian');
     Route::get('/pembelian/{id}/print', [PembelianController::class, 'printInvoice'])->name('printInvoice');
     Route::get('/daftarPembelian', [PembelianController::class, 'getAllPembelian']);
+    Route::get('/', function () {
+        return view('index');
+    });
 });
 
-Route::get('/', function () {
-    return view('index');
-});
 
 Route::get('/login', function (){
     return view('login');
