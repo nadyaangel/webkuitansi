@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pembelian;
 use App\Models\Barang;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class PembelianController extends Controller
@@ -15,7 +16,8 @@ class PembelianController extends Controller
     }
 
     public function getAllPembelian(Request $request){
-        $pembelian = Pembelian::query();
+        $userId = Auth::id();
+        $pembelian = Pembelian::where('user_id', $userId);
 
         $pembelian = $pembelian->paginate(10);
 
@@ -31,7 +33,10 @@ class PembelianController extends Controller
             'barang.*.harga_satuan' => 'required|numeric|min:0'
         ]);
 
+        $userId = Auth::id();
+
         $pembelian = Pembelian::create([
+            'user_id' => $userId,
             'nama' => $data['nama'],
             'total_harga' => 0
         ]);

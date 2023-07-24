@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     //
     function register(Request $request){
+        try{
         $request->validate([
             'username' => 'required|string|unique:users',
             'email' => 'required|string|email|unique:users',
@@ -23,6 +25,9 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/login')->with('success', 'Registrasi berhasil! Silakan login');
+    } catch(\Exception $e){
+        dd($e->getMessage());
+    }
     }
 
     function login(Request $request){
@@ -34,7 +39,7 @@ class UserController extends Controller
         $credentials = $request->only('username', 'password');
 
         if(Auth::attempt($credentials)){
-            return redirect('/index');
+            return redirect('/');
         }
         else {
             return redirect('/login')->with('error', 'Username atau password salah');

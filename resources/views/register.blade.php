@@ -5,7 +5,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <form action="" method="post">
+    <form action="{{ route('register')}}" method="post">
         @csrf
         <label for="username">Username:</label>
         <input type="text" name="username" required>
@@ -17,7 +17,7 @@
 
         <label for="email">Email:</label>
         <input type="email" name="email" required>
-        <button type="submit"></button>
+        <button type="submit">Register</button>
 
     </form>
 </body>

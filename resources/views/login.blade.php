@@ -6,7 +6,7 @@
 </head>
 <body>
     @include('navbar')
-    <form action="" method="post">
+    <form action="{{route('login')}}" method="post">
         @csrf
         <label for="username">Username</label>
         <input type="username" name="username" required>

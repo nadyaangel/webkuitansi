@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('pembelian_id');
             $table->string('nama_produk');
-            $table->decimal('harga_satuan');
+            $table->bigInteger('harga_satuan');
             $table->timestamps();
 
             $table->foreign('pembelian_id')->references('id')->on('pembelian')->onDelete('cascade');
