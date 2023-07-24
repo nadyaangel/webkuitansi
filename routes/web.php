@@ -35,8 +35,8 @@ Route::get('/register', function (){
 });
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
-Route::get('/daftarKuitansi', [KuitansiConntroller::class, 'getAllKuitansi']);
-Route::get('/kuitansi/form', [KuitansiConntroller::class, 'showForm'])->name('kuitansiform');
-Route::post('/kuitansi/generate', [KuitansiConntroller::class, 'generateKuitansi'])->name('kuitansi.generate');
-Route::get('/kuitansi/{id}', [KuitansiConntroller::class, 'showDetail'])->name('kuitansi.detail');
-Route::get('/kuitansi/{id}/print', [KuitansiConntroller::class, 'printKuitansi'])->name('printKuitansi');
+// Route::get('/daftarKuitansi', [KuitansiConntroller::class, 'getAllKuitansi']);
+// Route::get('/kuitansi/form', [KuitansiConntroller::class, 'showForm'])->name('kuitansiform');
+// Route::post('/kuitansi/generate', [KuitansiConntroller::class, 'generateKuitansi'])->name('kuitansi.generate');
+// Route::get('/kuitansi/{id}', [KuitansiConntroller::class, 'showDetail'])->name('kuitansi.detail');
+// Route::get('/kuitansi/{id}/print', [KuitansiConntroller::class, 'printKuitansi'])->name('printKuitansi');

@@ -35,12 +35,12 @@
 
     <div class="flex justify-center">
         <p class="text-center w-1/2">
-            Coba generate kuitansi dan invoice Anda dengan mudah di sini dan lihat arsipnya pada menu
+            Coba generate invoice Anda dengan mudah di sini dan lihat arsipnya pada menu
         </p>
     </div>
 
     <div class="flex justify-center m-5 space-x-8">
-        <div class="flex justify-center mt-8 space-x-4">
+        {{-- <div class="flex justify-center mt-8 space-x-4">
             <a href="/kuitansi/form">
                 <div class="bg-white px-5 py-2 shadow-md rounded-md image-container">
                     <div class="rounded-full overflow-hidden w-36 h-36 ">
@@ -50,7 +50,7 @@
                 </div>
                 <!-- Add a wrapper div to apply the circular style -->
             </a>
-        </div>
+        </div> --}}
         <div class="flex justify-center mt-8">
             <a href="/invoice/form">
                 <div class="bg-white px-5 py-2 shadow-md rounded-md image-container">
