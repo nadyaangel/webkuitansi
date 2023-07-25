@@ -3,8 +3,18 @@
     <title>Document</title>
     @vite('resources/css/app.css')
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+          /* Replace "image.jpg" with the actual name of your image file */
+          background-image: url('/assets/image/bg-web.png');
+          /* Set the background image size and repeat behavior as needed */
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+      }
+  </style>
 </head>
-<body>
+<body class="">
     @include('navbar')
     <form action="{{route('login')}}" method="post">
         @csrf
