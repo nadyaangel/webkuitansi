@@ -16,55 +16,44 @@
 </head>
 <body class="">
     @include('navbar')
-    <form action="{{route('login')}}" method="post">
+    <div class="flex justify-center">
+
+      <div class="bg-white rounded shadow-md px-5 py-5  md:w-1/3  ">
+      <h1 class="block uppercase font-bold text-lg text-center my-6">Login</h1>
+      <form action="{{route('login')}}" method="post" class="w-full md:h-96 max-w-sm">
         @csrf
-        <label for="username">Username</label>
-        <input type="username" name="username" required>
-        <br>
-        <label for="password"> Password
-        </label>
-        <input type="password" name="password" required>
-        <br>
-        <button type="submit">Login</button>
-    </form>
-    <form class="w-full max-w-sm">
-        <div class="md:flex md:items-center mb-6">
-          <div class="md:w-1/3">
-            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-              Full Name
-            </label>
+          <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/3">
+              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                Username
+              </label>
+            </div>
+            <div class="md:w-2/3">
+              <input type="username" name="username" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name">
+            </div>
           </div>
-          <div class="md:w-2/3">
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="Jane Doe">
+          <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/3">
+              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                Password
+              </label>
+            </div>
+            <div class="md:w-2/3">
+              <input type="password" name="password" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password">
+            </div>
           </div>
-        </div>
-        <div class="md:flex md:items-center mb-6">
-          <div class="md:w-1/3">
-            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
-              Password
-            </label>
+          
+          <div class="md:flex md:items-center">
+            
+            <div class="flex justify-center md:w-full">
+              <button type="submit" class="w-2/3 shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                Sign In
+              </button>
+            </div>
           </div>
-          <div class="md:w-2/3">
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" placeholder="******************">
-          </div>
-        </div>
-        <div class="md:flex md:items-center mb-6">
-          <div class="md:w-1/3"></div>
-          <label class="md:w-2/3 block text-gray-500 font-bold">
-            <input class="mr-2 leading-tight" type="checkbox">
-            <span class="text-sm">
-              Send me your newsletter!
-            </span>
-          </label>
-        </div>
-        <div class="md:flex md:items-center">
-          <div class="md:w-1/3"></div>
-          <div class="md:w-2/3">
-            <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-              Sign Up
-            </button>
-          </div>
-        </div>
-      </form>
-</body>
+        </form>
+        
+      </div>
+    </div>
+    </body>
 </html>
