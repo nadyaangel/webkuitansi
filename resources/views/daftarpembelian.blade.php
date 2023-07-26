@@ -30,7 +30,7 @@
             <tbody>
                 <tr>
                     <td scope="row" class="px-6 py-4 font-medium">
-                        {{($pembelian->firstItem()+$item)}}
+                        {{$item + 1}}
                     </td>
                     <td scope="row" class=" py-4 font-medium">
                         {{$s->nama}}

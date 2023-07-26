@@ -14,12 +14,37 @@ class PembelianController extends Controller
     public function showFormPembelian(){
         return view('invoiceform');
     }
+    public function convertToWords($number)
+    {
+    $words = ["", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas"];
+
+    if ($number < 12) {
+        return $words[$number];
+    } elseif ($number < 20) {
+        return $words[$number - 10] . " Belas";
+    } elseif ($number < 100) {
+        return $words[floor($number / 10)] . " Puluh " . $words[$number % 10];
+    } elseif ($number < 200) {
+        return "Seratus " . $this->convertToWords($number % 100);
+    } elseif ($number < 1000) {
+        return $words[floor($number / 100)] . " Ratus " . $this->convertToWords($number % 100);
+    } elseif ($number < 2000) {
+        return "Seribu " . $this->convertToWords($number % 1000);
+    } elseif ($number < 1000000) {
+        return $this->convertToWords(floor($number / 1000)) . " Ribu " . $this->convertToWords($number % 1000);
+    } elseif ($number < 1000000000) {
+        return $this->convertToWords(floor($number / 1000000)) . " Juta " . $this->convertToWords($number % 1000000);
+    } elseif ($number < 1000000000000) {
+        return $this->convertToWords(floor($number / 1000000000)) . " Miliar " . $this->convertToWords($number % 1000000000);
+    } else {
+        return "Angka terlalu besar";
+    }
+}
 
     public function getAllPembelian(Request $request){
         $userId = Auth::id();
-        $pembelian = Pembelian::where('user_id', $userId);
+        $pembelian = Pembelian::where('user_id', $userId)->get();
 
-        $pembelian = $pembelian->paginate(10);
 
         return view('daftarpembelian', ['pembelian' => $pembelian]);
     }
@@ -35,7 +60,7 @@ class PembelianController extends Controller
         ]);
 
         $userId = Auth::id();
-
+       
         $pembelian = Pembelian::create([
             'user_id' => $userId,
             'nama' => $data['nama'],
@@ -58,6 +83,11 @@ class PembelianController extends Controller
         $pembelian->total_harga = $totalHarga;
         $pembelian->save();
 
+        if($data['total_harga'] == 0){
+            $data['jumlah_uang_terbilang'] = 'Nol';
+        } else {
+            $data['jumlah_uang_terbilang'] = $this->convertToWords($data['total_harga']);
+        }
         session(['pembelian_id' => $pembelian->id]);
 
         return redirect()->route('detailPembelian', ['id' => $pembelian->id])->with('success', 'Pembelian berhasil ditambahkan'); }
@@ -76,6 +106,11 @@ class PembelianController extends Controller
 
     public function showDetail($id){
         $pembelian = Pembelian::findOrFail($id);
+        if($pembelian->total_harga == 0){
+            $pembelian->jumlah_uang_terbilang = 'Nol';
+        } else {
+            $pembelian->jumlah_uang_terbilang = $this->convertToWords($pembelian->total_harga);
+        }
         return view('invoice', compact('pembelian'));
     }
 }
