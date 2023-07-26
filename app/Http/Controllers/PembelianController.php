@@ -27,6 +27,7 @@ class PembelianController extends Controller
         try{
         $data = $request->validate([
             'nama' => 'required|string',
+            'keterangan' => 'required|string',
             'barang' => 'required|array',
             'barang.*.nama_produk' => 'required|string',
             // 'barang.*.jumlah' => 'required|integer|min:1',
@@ -38,6 +39,7 @@ class PembelianController extends Controller
         $pembelian = Pembelian::create([
             'user_id' => $userId,
             'nama' => $data['nama'],
+            'keterangan' => $data['keterangan'],
             'total_harga' => 0
         ]);
 

@@ -16,14 +16,14 @@
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3 rounded-l-lg">
+                <th scope="col" class="px-6 py-3 rounded-l-lg ">
                   No
                 </th>
                 <th scope="col" class="px-6 py-3 rounded-l-lg">
                     Keterangan
                 </th>
                 
-                <th scope="col" class="px-6 py-3 rounded-r-lg">
+                <th scope="col" class="px-6 py-3 rounded-r-lg ">
                     Biaya
                 </th>
             </tr>
@@ -31,15 +31,22 @@
         <tbody>
             <tr class="bg-white dark:bg-gray-800">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    
                 </th>
-               
+                
                 <td class="px-6 py-4">
+                    JUAL SAHAM SAHAM Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore corrupti debitis, error inventore dolores ipsam, veritatis quam numquam laboriosam iure in esse! Cupiditate vel architecto, necessitatibus ab eos optio nesciunt.
+                    {{-- {{$pembelian->keterangan}} --}}
+                </td>
+                <td class="px-6 py-4">
+                    
                   
                 </td>
             </tr>
             @foreach($pembelian->barang as $barang)
             <tr class="bg-white dark:bg-gray-800">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    1
+                </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$barang->nama_produk}}
                 </th>
@@ -54,6 +61,7 @@
         </tbody>
         <tfoot>
             <tr class="font-semibold text-gray-900 dark:text-white">
+                <th scope="row" class="px-6 py-3 text-base"></th>
                 <th scope="row" class="px-6 py-3 text-base">Total</th>
 
                 <td class="px-6 py-3">
