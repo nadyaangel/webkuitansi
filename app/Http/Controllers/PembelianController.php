@@ -100,6 +100,11 @@ class PembelianController extends Controller
 
     public function printInvoice($id){
         $pembelian = Pembelian::findOrFail($id);
+        if($pembelian->total_harga == 0){
+            $pembelian->jumlah_uang_terbilang = 'Nol';
+        } else {
+            $pembelian->jumlah_uang_terbilang = $this->convertToWords($pembelian->total_harga);
+        }
         $pdf = PDF::loadView('invoicepembelian', compact('pembelian'));
         return $pdf->download('invoice.pdf');
     }
