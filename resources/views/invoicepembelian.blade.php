@@ -189,27 +189,8 @@
             text-align: center;
         }
 
-        .bg-blue-600 {
-            background-color: #2563eb;
-        }
-
-        .hover\:bg-blue-700:hover {
-            background-color: #1d4ed8;
-        }
-
-        .focus\:shadow-outline:focus {
-            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
-        }
-
-        .focus\:outline-none:focus {
-            outline: 0;
-        }
-
       
 
-        .font-bold {
-            font-weight: bold;
-        }
 
         .py-2 {
             padding-top: 0.5rem;
@@ -221,9 +202,6 @@
             padding-right: 1rem;
         }
 
-        .rounded {
-            border-radius: 0.25rem;
-        }
 
         .justify-center {
             justify-content: center;
@@ -244,13 +222,38 @@
 <body>
     <h3 style="display: block; text-transform:uppercase;" class="text-center font-bold mt-5">Invoice</h3>
 
-    <div class="shadow-md mx-32 my-5 px-5 py-3">
-        <p class="mx-5">No : {{ $pembelian->id }}</p>
-        <p class="mx-5">Bill To : {{ $pembelian->nama }}</p>
-    </div>
+        <table style="margin-left: 2rem">
+            <tr>
+                <td>
+                    <div class="" style="flex-basis: 50%;">
+                        <p><u><b>DAVID, S.H., M.Kn</b></u> <br>
+                            Kantor Notaris <br>
+                            Jl. Jenderal Ahmad Yani No. 58/170, 13 Ulu, <br>
+                            Depan STIE AKUBANK Mulia Dharma Pratama <br>
+                            Palembang, Sumatera Selatan 30263 <br>
+                            Telepon: 0711 512 177 / 0811 781 506
+                            <br>
+                            Bill To : {{ $pembelian->nama }}
+                        </p>
+                        
+                    </div>
+                    
+                </td>
+                <td style="vertical-align: top;">
+                    <div class="" style="padding-left:8rem;">
+                        <p class=""> Tanggal: {{$pembelian->created_at}} <br>
+                            No : {{ $pembelian->id }} </p>
+                        </div>
+
+                </td>
+            </tr>
+        </table>
+
+    
+    
 
     <div class="max-md:mx-10 mx-32 relative rounded-lg shadow overflow-x-auto">
-        <table class=" tabel w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table class=" tabel w-full text-sm text-left ">
             <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" style="padding: 5pt 5pt 5pt 5pt" class="rounded-l-lg ">
@@ -266,7 +269,7 @@
             </thead>
             <tbody>
                 <tr class="bg-white dark:bg-gray-800">
-                    <th scope="row" style="padding: 5pt 5pt 5pt 5pt" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" style="padding: 5pt 5pt 5pt 5pt" class="">
                     </th>
                     <td style="padding: 5pt 5pt 5pt 5pt" class="">
                         {{ $pembelian->keterangan }}
@@ -277,13 +280,13 @@
                 <?php $total = 0; ?>
                 @foreach($pembelian->barang as $barang)
                     <?php $total += $barang->harga_satuan; ?>
-                    <tr class="bg-white dark:bg-gray-800">
-                        <th scope="row" style="padding: 5pt 5pt 5pt 5pt; font-family: Calibri, sans-serif;" class="">
+                    <tr class="">
+                        <td scope="row" style="padding: 5pt 5pt 5pt 5pt; font-family: Calibri, sans-serif; text-align:center;" class="">
                             {{ $loop->iteration }}
-                        </th>
-                        <th scope="row" style="padding: 5pt 5pt 5pt 5pt; font-family: Calibri, sans-serif" class="">
+                        </td>
+                        <td style="padding: 5pt 5pt 5pt 5pt; text-align:left;" class="">
                             {{ $barang->nama_produk }}
-                        </th>
+                        </td>
                         <td class="" style="padding: 5pt 5pt 5pt 5pt; font-family: Calibri,  sans-serif;">
                             {{ 'Rp' . number_format($barang->harga_satuan, 2, ',', '.') }}
                         </td>
@@ -308,10 +311,21 @@
     </div>
 
     <div class="mx-32 my-10 shadow-md " style="margin-bottom: 0.5rem">
-        <p style="">No. Rek BCA : 021 2362 555</p>
-        <p>No. Rek BNI : 8373 88 3888</p>
-        <p>No. Rek Mandiri : 112 0088 8588 78</p>
-        <p>a.n David</p>
+        <p style="">No. Rek BCA : 021 2362 555 <br>
+        No. Rek BNI : 8373 88 3888 <br>
+        No. Rek Mandiri : 112 0088 8588 78 <br>
+        a.n David</p>
+    </div>
+
+    <div style="text-align: right; margin-right:2rem">
+        <p>
+            Approved by </p>
+        </div>
+        
+    <div style="text-align: right; margin-top:1rem">
+        <p>( <span style="margin-left:8rem">)</span> 
+
+    </p> 
     </div>
 
     
