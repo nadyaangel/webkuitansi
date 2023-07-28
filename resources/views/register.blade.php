@@ -36,7 +36,7 @@
       <h1 class="block uppercase font-bold text-lg text-center my-6">Register</h1>
       <p class="mx-7 text-sm text-center font-semibold my-4">Hai, silakan daftarkan username, email, dan password Anda!</p>
 
-      <div class="mb-10">
+      {{-- <div class="mb-10">
         @if(session('error'))
         <div class="bg-red-200 border border-red-600 text-red-900 px-4 py-3 rounded relative" role="alert">
             <strong>Terjadi kesalahan!</strong>
@@ -44,7 +44,7 @@
         </div>
         @endif
       
-      </div>
+      </div> --}}
 
       <form action="{{route('register')}}" method="post" class="w-full md:h-72">
         @csrf
