@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>Register</title>
     @vite('resources/css/app.css')
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
@@ -35,6 +35,17 @@
       <div class="bg-white rounded shadow-md px-5 py-5 min-h-full md:w-1/3 mx-5 md:mx-0 mb-10 ">
       <h1 class="block uppercase font-bold text-lg text-center my-6">Register</h1>
       <p class="mx-7 text-sm text-center font-semibold my-4">Hai, silakan daftarkan username, email, dan password Anda!</p>
+
+      <div class="mb-10">
+        @if(session('error'))
+        <div class="bg-red-200 border border-red-600 text-red-900 px-4 py-3 rounded relative" role="alert">
+            <strong>Terjadi kesalahan!</strong>
+            <span>{{session('error')}}</span>
+        </div>
+        @endif
+      
+      </div>
+
       <form action="{{route('register')}}" method="post" class="w-full md:h-72">
         @csrf
         <div class="mb-4">
@@ -42,18 +53,27 @@
             Username
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-800" id="username" type="username" name="username"  placeholder="Username">
+        @error('username')
+          <p class="text-red-500">{{$message}}</p>
+        @enderror
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
               Email
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-800" id="email" type="email" name="email"  placeholder="Email">
+        @error('email')
+          <p class="text-red-500">{{$message}}</p>
+        @enderror
           </div>
         <div class="mb-6">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
             Password
           </label>
-          <input class="shadow appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Your Password" name="password">
+          <input class="shadow appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Your Password, min. 8 characters" name="password">
+          @error('password')
+          <p class="text-red-500">{{$message}}</p>
+        @enderror
         </div>
         <div class="md:flex md:items-center mb-2 col-md-pl-5 col-lg-pl-5">
             <div class="w-full flex justify-center ">

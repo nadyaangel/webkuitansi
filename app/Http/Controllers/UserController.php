@@ -16,6 +16,13 @@ class UserController extends Controller
             'username' => 'required|string|unique:users',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|min:8'
+        ], [
+            'username.required' => 'Username harus diisi',
+            'username.unique' =>'Username sudah digunakan',
+            'email.required' =>'Email harus diisi',
+            'email.unique' => 'Email sudah digunakan',
+            'password.required' => 'Password harus diisi',
+            'password.min' => 'Password minimal 8 karakter'
         ]);
 
         $user = new User();
@@ -26,7 +33,9 @@ class UserController extends Controller
 
         return redirect('/login')->with('success', 'Registrasi berhasil! Silakan login');
     } catch(\Exception $e){
-        dd($e->getMessage());
+        return redirect('/register')
+        ->withErrors(['error', 'Registrasi gagal. Mohon coba lagi'])
+        ->withInput();
     }
     }
 

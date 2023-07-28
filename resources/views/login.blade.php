@@ -35,6 +35,24 @@
       <div class="bg-white rounded shadow-md px-5 py-5  md:w-1/3 mx-5 md:mx-0 mb-10 ">
       <h1 class="block uppercase font-bold text-lg text-center my-6">Login</h1>
       <p class="mx-7 text-sm text-center font-semibold my-10">Hai, masukkan username dan password yang telah didaftarkan sebelumnya ya!</p>
+     
+     <div class="mb-10">
+      @if(session('error'))
+      <div class="bg-red-200 border border-red-600 text-red-900 px-4 py-3 rounded relative" role="alert">
+          <strong>Terjadi kesalahan!</strong>
+          <span>{{session('error')}}</span>
+      </div>
+      @endif
+       @if(session('success'))
+       <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+           <strong class="">Sukses!</strong>
+           <span class="block sm:inline">{{ session('success') }}</span>
+       </div>
+       @endif
+
+     </div>
+     
+     
       <form action="{{route('login')}}" method="post" class="w-full md:h-72">
         @csrf
         <div class="mb-4">
