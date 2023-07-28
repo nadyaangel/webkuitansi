@@ -52,13 +52,15 @@
             </a>
         </div> --}}
         <div class="flex justify-center mt-8">
-            <a href="/invoice/form">
-                <div class="bg-white px-5 py-2 shadow-md rounded-md image-container">
+            <a href="/invoice/form" class="bg-blue-500 font-semibold text-white px-11 py-2 rounded-2xl hover:bg-blue-700">
+
+                Mulai
+                {{-- <div class="bg-white px-5 py-2 shadow-md rounded-md image-container">
                     <div class="rounded-full overflow-hidden w-36 h-36 ">
                         <img src="/assets/image/casier.jpg" class="w-full h-full" alt="">
                     </div>
                     <p class="mt-5 text-center">Invoice</p>
-                </div>
+                </div> --}}
                 <!-- Add a wrapper div to apply the circular style -->
             </a>
         </div>
