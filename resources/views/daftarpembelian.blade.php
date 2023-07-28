@@ -23,7 +23,7 @@
                     </th>
                     <th>
                     
-                        Jumlah Pembelian
+                        Jumlah Tagihan
                     </th>
                 </tr>
             </thead>
@@ -34,9 +34,9 @@
                         {{$item + 1}}
                     </td>
                     <td scope="row" class=" py-4 font-medium">
-                        {{$s->nama}}
+                      <a href="/pembelian/{{$s->id}}/detail"> {{$s->nama}} </a> 
                     </td>
-                    <td scope="row" class="py-4 font-medium">{{$s->created_at}}</td>
+                    <td scope="row" class="py-4 font-medium">{{$s->created_at->format('d-m-Y')}}</td>
                     <td scope="row" class="py-4 font-medium">
                         {{'Rp' . number_format($s->total_harga, 2, ',', '.')}}
                     </td>
