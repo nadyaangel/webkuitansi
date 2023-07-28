@@ -22,6 +22,7 @@
                         Tanggal
                     </th>
                     <th>
+                    
                         Jumlah Pembelian
                     </th>
                 </tr>

@@ -9,6 +9,8 @@ class Pembelian extends Model
 {
     protected $fillable = ['user_id', 'nama', 'keterangan', 'total_harga'];
     protected $table = 'pembelian';
+    protected $guarded = [];
+    protected $dates = ['created_at'];
     public function barang() {
         return $this->hasMany(Barang::class);
     }

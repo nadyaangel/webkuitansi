@@ -241,7 +241,7 @@
                 </td>
                 <td style="vertical-align: top;">
                     <div class="" style="padding-left:8rem;">
-                        <p class=""> Tanggal: {{$pembelian->created_at}} <br>
+                        <p class=""> Tanggal: {{ $pembelian->created_at->format('d-m-Y') }} <br>
                             No : {{ $pembelian->id }} </p>
                         </div>
 

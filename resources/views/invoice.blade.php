@@ -11,7 +11,8 @@
 
     <div class="shadow-md mx-32 my-10 px-5 py-3">
         <p class="mx-5 mb-2">No : {{ $pembelian->id }}</p>
-        <p class="mx-5 ">Bill To : {{ $pembelian->nama }}</p>
+        <p class="mx-5 mb-2 ">Bill To : {{ $pembelian->nama }}</p>
+        <p class="mx-5">Tanggal : {{ $pembelian->created_at->format('d-m-Y') }}</p>
 
     </div>
 

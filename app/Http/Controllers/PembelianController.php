@@ -7,6 +7,7 @@ use App\Models\Pembelian;
 use App\Models\Barang;
 use Illuminate\Support\Facades\Auth;
 use PDF;
+use Carbon\Carbon;
 
 class PembelianController extends Controller
 {
@@ -48,63 +49,64 @@ class PembelianController extends Controller
 
         return view('daftarpembelian', ['pembelian' => $pembelian]);
     }
-    public function processForm(Request $request){
-        try{
-        $data = $request->validate([
-            'nama' => 'required|string',
-            'keterangan' => 'required|string',
-            'barang' => 'required|array',
-            'barang.*.nama_produk' => 'required|string',
-            // 'barang.*.jumlah' => 'required|integer|min:1',
-            'barang.*.harga_satuan' => 'required|numeric|min:0'
-        ]);
-
-        $userId = Auth::id();
-       
-        $pembelian = Pembelian::create([
-            'user_id' => $userId,
-            'nama' => $data['nama'],
-            'keterangan' => $data['keterangan'],
-            'total_harga' => 0
-        ]);
-
-        $totalHarga = 0;
-        foreach($data['barang'] as $barangData){
-            $barang = new Barang([
-                'nama_produk' => $barangData['nama_produk'],
-                // 'jumlah' => $barangData['jumlah'],
-                'harga_satuan' => $barangData['harga_satuan']
+    public function processForm(Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'nama' => 'required|string',
+                'keterangan' => 'required|string',
+                'barang' => 'required|array',
+                'barang.*.nama_produk' => 'required|string',
+                'barang.*.harga_satuan' => 'required|numeric|min:0'
             ]);
-
-            $pembelian->barang()->save($barang);
-            $totalHarga += ($barangData['harga_satuan']);
-
-        }
-        $pembelian->total_harga = $totalHarga;
-        $pembelian->save();
-
-        if($data['total_harga'] == 0){
-            $data['jumlah_uang_terbilang'] = 'Nol';
-        } else {
-            $data['jumlah_uang_terbilang'] = $this->convertToWords($data['total_harga']);
-        }
-        session(['pembelian_id' => $pembelian->id]);
-
-        return redirect()->route('detailPembelian', ['id' => $pembelian->id])->with('success', 'Pembelian berhasil ditambahkan'); }
-        catch(\Exception $e){
+    
+            $userId = Auth::id();
+    
+            $pembelian = Pembelian::create([
+                'user_id' => $userId,
+                'nama' => $data['nama'],
+                'keterangan' => $data['keterangan'],
+                'total_harga' => 0
+            ]);
+    
+            $totalHarga = 0;
+            foreach ($data['barang'] as $barangData) {
+                $barang = new Barang([
+                    'nama_produk' => $barangData['nama_produk'],
+                    'harga_satuan' => $barangData['harga_satuan']
+                ]);
+    
+                $pembelian->barang()->save($barang);
+                $totalHarga += $barangData['harga_satuan'];
+            }
+    
+            $pembelian->total_harga = $totalHarga;
+            $pembelian->save();
+    
+            if ($totalHarga == 0) {
+                $data['jumlah_uang_terbilang'] = 'Nol';
+            } else {
+                $data['jumlah_uang_terbilang'] = $this->convertToWords($totalHarga);
+            }
+    
+            session(['pembelian_id' => $pembelian->id]);
+    
+            return redirect()->route('detailPembelian', ['id' => $pembelian->id])->with('success', 'Pembelian berhasil ditambahkan');
+        } catch (\Exception $e) {
             dd($e->getMessage());
         }
-
-
     }
+    
 
     public function printInvoice($id){
         $pembelian = Pembelian::findOrFail($id);
+        $pembelian->created_at = substr($pembelian->created_at, 0, 10);
         if($pembelian->total_harga == 0){
             $pembelian->jumlah_uang_terbilang = 'Nol';
         } else {
             $pembelian->jumlah_uang_terbilang = $this->convertToWords($pembelian->total_harga);
         }
+
         $pdf = PDF::loadView('invoicepembelian', compact('pembelian'));
         return $pdf->download('invoice.pdf');
     }
@@ -116,6 +118,9 @@ class PembelianController extends Controller
         } else {
             $pembelian->jumlah_uang_terbilang = $this->convertToWords($pembelian->total_harga);
         }
+        $pembelian->created_at = $pembelian->created_at->format('d-m-Y');
+        // $pembelian->created_at = substr($pembelian->created_at, 0, 10);
+
         return view('invoice', compact('pembelian'));
     }
 }
